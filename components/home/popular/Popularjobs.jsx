@@ -11,6 +11,7 @@ const Popularjobs = () => {
   const router = useRouter();
   
   const { data, isLoading, error } = useFetch('search', { query: 'React developer', num_pages: '1', page: '1' } )
+  console.log(error)
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -27,10 +28,11 @@ const Popularjobs = () => {
         ) : (
           <FlatList
             showsHorizontalScrollIndicator = {false}
-            data={[1, 2, 3 , 4, 5, 6, 7, 8]}
+            data={data}
             renderItem={({ item }) => (
               <PopularJobCard
                 item={item}
+                handlePress={(item) => router.push(`/job-details/${item.job_id}`)}
               />
             )}
             keyExtractor={item => item?.job_id}

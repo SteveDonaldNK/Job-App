@@ -11,9 +11,9 @@ const useFetch = (endpoint, query) => {
 
     const options = {
         method: 'GET',
-        url: 'https://jsearch.p.rapidapi.com/search',
+        url: `https://jsearch.p.rapidapi.com/search`,
         params: {
-          query: 'Python developer in Texas, USA',
+          query: 'web developer, US',
           page: '1',
           num_pages: '1'
         },
@@ -28,7 +28,7 @@ const useFetch = (endpoint, query) => {
 
         try {
             const res = await axios.request(options);
-            setData(res.data);
+            setData(res.data.data);
             setIsLoading(false);
         } catch (error) {
             setError(true)
